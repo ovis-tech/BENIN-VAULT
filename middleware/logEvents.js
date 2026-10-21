@@ -1,6 +1,5 @@
 const { format } = require('date-fns');
-const { v4: uuidv4 } = require('uuid');
-const fs = require('fs');
+const { randomUUID: uuid } = require("crypto");const fs = require('fs');
 const fsPromises = fs.promises;
 const path = require('path');
 
@@ -10,14 +9,14 @@ const logsDir = process.env.VERCEL
 
 const logEvents = async (message, logName) => {
     const dateTime = `${format(new Date(), 'yyyy-MM-dd\tHH:mm:ss')}`;
-    const logItem = `${dateTime}\t${uuidv4()}\t${message}\n`;
+    const logItem = `${dateTime}\t${uuid()}\t${message}\n`;
     console.log(logItem);
 
     try {
         if (!fs.existsSync(logsDir)) {
-            await fsPromises.mkdir(logsDir);
+            await fsPromises.mkdir(logsDir, { recursive: true });
         }
-        await fsPromises.appendFile(path.join(__dirname, '..', 'logs', logName), logItem);
+        await fsPromises.appendFile(path.join(logsDir, logName), logItem);
     } catch (err) {
         console.log(err);
     }
