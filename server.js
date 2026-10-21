@@ -64,7 +64,11 @@ app.all("/{*splat}", (req, res) => {
 });
 app.use(errorHandler);
 
-mongoose.connection.once("open", () => {
-  console.log("Connected to MongoDB");
-  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-});
+if (require.main === module) {
+  mongoose.connection.once("open", () => {
+    console.log("Connected to MongoDB");
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+  });
+}
+
+module.exports = app;

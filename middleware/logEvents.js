@@ -4,14 +4,18 @@ const fs = require('fs');
 const fsPromises = fs.promises;
 const path = require('path');
 
+const logsDir = process.env.VERCEL
+  ? "/tmp/logs"
+  : path.join(__dirname, "..", "logs");
+
 const logEvents = async (message, logName) => {
     const dateTime = `${format(new Date(), 'yyyy-MM-dd\tHH:mm:ss')}`;
     const logItem = `${dateTime}\t${uuidv4()}\t${message}\n`;
     console.log(logItem);
 
     try {
-        if (!fs.existsSync(path.join(__dirname, '..', 'logs'))) {
-            await fsPromises.mkdir(path.join(__dirname, '..', 'logs'));
+        if (!fs.existsSync(logsDir)) {
+            await fsPromises.mkdir(logsDir);
         }
         await fsPromises.appendFile(path.join(__dirname, '..', 'logs', logName), logItem);
     } catch (err) {
