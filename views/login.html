@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Benin Vault — Enter</title>
+  <link rel="stylesheet" href="/css/login.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="scene" id="scene">
+  <div class="bg-grid"></div>
+  <div class="bg-vignette"></div>
+
+  <div class="card-wrap" id="card">
+
+    <!-- LEFT -->
+    <div class="panel-left">
+      <div class="brand">
+<div class="brand-icon">
+  <img src="/image/download (1).png" alt="Benin Vault" />
+</div>        <span class="brand-name">Benin Vault</span>
+      </div>
+
+      <div class="panel-headline">
+        <h1>Guard the<br/><em>ancestral</em><br/>record.</h1>
+        <p>A living archive of Benin bronzes, ivories, and royal regalia — preserved for those who carry the lineage forward.</p>
+      </div>
+
+      <div class="panel-footer">
+        <div class="footer-line"></div>
+        <p>Kingdom of Benin · Est. 13th Century</p>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="panel-right">
+      <div class="tabs">
+        <button class="tab-btn active" id="tabLogin" onclick="switchTab('login')">Sign In</button>
+        <button class="tab-btn" id="tabRegister" onclick="switchTab('register')">Register</button>
+      </div>
+
+      <!-- LOGIN -->
+      <div class="form-panel active" id="formLogin">
+        <div class="field">
+          <label>Username</label>
+          <input type="text" id="loginUser" placeholder="Enter your username" autocomplete="username"/>
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input type="password" id="loginPass" placeholder="••••••••" autocomplete="current-password"/>
+        </div>
+        <button class="btn-primary" onclick="doLogin()">Enter the Vault</button>
+        <p class="msg" id="loginMsg"></p>
+        <p class="switch-hint">No account? <a href="#" onclick="switchTab('register')">Register here</a></p>
+      </div>
+
+      <!-- REGISTER -->
+      <div class="form-panel" id="formRegister">
+        <div class="field">
+          <label>Username</label>
+          <input type="text" id="regUser" placeholder="Choose a username" autocomplete="username"/>
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input type="password" id="regPass" placeholder="••••••••" autocomplete="new-password"/>
+        </div>
+        <button class="btn-primary" onclick="doRegister()">Create Account</button>
+        <p class="msg" id="regMsg"></p>
+        <p class="switch-hint">Already a member? <a href="#" onclick="switchTab('login')">Sign in</a></p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+<script src="/js/login.js"></script>
+</body>
+</html>

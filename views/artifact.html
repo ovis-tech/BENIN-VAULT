@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Benin Vault</title>
+    <link rel="stylesheet" href="/css/artifact.css" />
+    <link rel="stylesheet" href="/fontawesome-free-6.4.0-web/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;1,500&family=DM+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/owl-carousel/css/owl.carousel.css" />
+    <link rel="stylesheet" href="/owl-carousel/css/owl.theme.default.min.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* Simple badge for cart count */
+      .cart-badge {
+        position: absolute;
+        top: -5px;
+        right: -10px;
+        background: red;
+        color: white;
+        font-size: 12px;
+        padding: 2px 6px;
+        border-radius: 50%;
+        display: none; /* Hidden until count > 0 */
+      }
+      .cart-icon-wrapper {
+        position: relative;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <div id="app">
+      <header class="header">
+        <a href="/" class="logo">
+          <img src="/image/download (1).png" alt="Logo" />
+          <span>Benin Vault</span>
+        </a>
+        <nav class="nav-bar">
+          <a href="project.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="artifact.html">Artifacts</a>
+          <a href="">Services</a>
+          <a href="plan.html">Plan</a>
+          <a href="">Contact</a>
+        </nav>
+      </header>
+
+      <section class="artifact">
+        <form id="search-form" class="form">
+          <input
+            type="text"
+            id="search-input"
+            class="input"
+            placeholder="Search for artifacts..."
+          />
+          <button type="submit" class="btn btn-2">search</button>
+        </form>
+        <div id="card-container" class="card-container"></div>
+      </section>
+    </div>
+    <!-- </div> -->
+
+    <script>
+      let cartCount = 0;
+      function updateCartCount() {
+        const badge = document.getElementById("cart-count");
+        cartCount++;
+        badge.textContent = cartCount;
+        badge.style.display = cartCount > 0 ? "inline-block" : "none";
+      }
+      // Hook into addToCart from artifact.js
+      function addToCart(id) {
+        console.log("Added to cart:", id);
+        updateCartCount();
+        // You can extend this to store cart items in localStorage if needed
+      }
+    </script>
+    <script src="/js/artifact.js"></script>
+  </body>
+</html>

@@ -1,0 +1,347 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --ink: #0d0d0d;
+  --white: #ffffff;
+  --paper: #fafafa;
+  --gray: #6b6b6b;
+  --gray-light: #d8d8d8;
+}
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: var(--white);
+  color: var(--ink);
+}
+
+/* -------------------------
+   Layout
+   ------------------------- */
+#detail-container {
+  display: flex;
+  gap: 4rem;
+  padding: 4rem 6vw;
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
+#detail-image {
+  flex: 1;
+  position: relative;
+  max-width: 560px;
+  padding: 14px;
+  background: var(--ink);
+  animation: frame-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Royal double-border frame: heavy outer ink, thin inset white hairline,
+   with corner flourishes marking it as ceremonial rather than decorative */
+#detail-image::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid var(--white);
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 3;
+}
+
+#detail-image img {
+  width: 100%;
+  height: 640px;
+  object-fit: cover;
+  cursor: zoom-in;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+/* Corner ornaments — the "royal" flourish, one per corner */
+.frame-corner {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border: 2px solid var(--white);
+  z-index: 4;
+  opacity: 0;
+  pointer-events: none;
+  animation: corner-in 0.6s ease forwards;
+}
+.frame-corner.tl { top: 6px; left: 6px; border-right: none; border-bottom: none; animation-delay: 0.35s; }
+.frame-corner.tr { top: 6px; right: 6px; border-left: none; border-bottom: none; animation-delay: 0.45s; }
+.frame-corner.bl { bottom: 6px; left: 6px; border-right: none; border-top: none; animation-delay: 0.55s; }
+.frame-corner.br { bottom: 6px; right: 6px; border-left: none; border-top: none; animation-delay: 0.65s; }
+
+@keyframes corner-in {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes frame-rise {
+  from { opacity: 0; transform: translateY(24px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Slow light sweep across the frame on load — a single, restrained
+   "reveal" moment rather than continuous motion */
+#detail-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.35) 45%,
+    transparent 60%
+  );
+  transform: translateX(-120%);
+  animation: sweep 1.4s ease 0.3s 1;
+}
+
+@keyframes sweep {
+  to { transform: translateX(120%); }
+}
+
+/* Subtle lift + brighten on hover, keeps it feeling like an object, not a photo */
+#detail-image:hover img {
+  filter: brightness(1.03);
+  transition: filter 0.4s ease;
+}
+
+#detail-info {
+  flex: 1;
+  max-width: 600px;
+  padding-top: 0.5rem;
+}
+
+/* -------------------------
+   Eyebrow + heading
+   ------------------------- */
+.artifact-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.2rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 1.2rem;
+  font-weight: 600;
+}
+
+.artifact-eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 2px;
+  background: var(--ink);
+  display: inline-block;
+}
+
+#detail-info h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: clamp(2.8rem, 4vw, 4rem);
+  line-height: 1.05;
+  margin: 0 0 0.4rem;
+  color: var(--ink);
+}
+
+#detail-info h2 {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.9rem;
+  color: var(--gray);
+  margin: 0 0 1.6rem;
+}
+
+.click {
+  margin-bottom: 2rem;
+}
+
+.but2 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  background: transparent;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  padding: 0.7rem 1.6rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.but2:hover {
+  background: var(--ink);
+  color: var(--white);
+}
+
+/* -------------------------
+   Museum wall label (signature element)
+   ------------------------- */
+.artifact-description {
+  position: relative;
+  border: 1px solid var(--ink);
+  border-left: 4px solid var(--ink);
+  background: var(--paper);
+  padding: 2rem 2.2rem 1.6rem;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #1a1a1a;
+  border-radius: 0;
+
+  /* Cap height, scroll internally so long entries don't push
+     the rest of the page (chat box, etc.) further down */
+  max-height: 320px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gray-light) transparent;
+}
+
+.artifact-description::-webkit-scrollbar {
+  width: 6px;
+}
+
+.artifact-description::-webkit-scrollbar-thumb {
+  background: var(--gray-light);
+  border-radius: 3px;
+}
+
+.artifact-description::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.artifact-description b {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.3rem;
+  color: var(--gray);
+  margin-bottom: 0.8rem;
+}
+
+/* -------------------------
+   Zoom modal
+   ------------------------- */
+#zoom-modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  inset: 0;
+  background: rgba(13, 13, 13, 0.94);
+  justify-content: center;
+  align-items: center;
+}
+
+#zoom-modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border: 1px solid var(--white);
+}
+
+#zoom-close {
+  position: absolute;
+  top: 2.4rem;
+  right: 4rem;
+  font-size: 3.6rem;
+  font-weight: 300;
+  color: var(--white);
+  cursor: pointer;
+  line-height: 1;
+}
+
+#zoom-close:hover {
+  color: var(--gray-light);
+}
+
+/* -------------------------
+   PiP magnifier
+   ------------------------- */
+#pip-container {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 160px;
+  height: 160px;
+  overflow: hidden;
+  border: 1px solid var(--ink);
+  background: var(--white);
+  z-index: 10;
+  border-radius: 4px;
+  box-shadow: 0 6px 18px rgba(13, 13, 13, 0.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+/* FIX: visibility now driven by the .active class the JS toggles
+   (showPiP/hidePiP), not a plain :hover rule. The old hover rule
+   fought with the JS's own display/opacity logic and caused the
+   magnifier to vanish the moment the cursor crossed onto it. */
+#pip-container.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#pip-img {
+  position: absolute;
+  width: 300%;
+  height: 300%;
+  /* FIX: object-fit: cover makes pip-img crop itself the same way
+     mainImg does (mainImg also uses object-fit: cover). Without this,
+     pip-img fell back to its natural aspect ratio, which didn't match
+     the cropped view visitors actually see in the main image — that
+     mismatch was the root cause of the magnifier showing the whole
+     artifact shrunk down instead of a true zoomed-in crop. */
+  object-fit: cover;
+  transform: translate(0, 0);
+  transition: transform 0.05s ease-out;
+  pointer-events: none;
+}
+
+/* -------------------------
+   Reduced motion
+   ------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  #detail-image,
+  .frame-corner,
+  #detail-image::after {
+    animation: none !important;
+  }
+  #detail-image {
+    opacity: 1;
+    transform: none;
+  }
+  .frame-corner {
+    opacity: 1;
+  }
+}
+
+/* -------------------------
+   Responsive
+   ------------------------- */
+@media (max-width: 860px) {
+  #detail-container {
+    flex-direction: column;
+    padding: 2.5rem 6vw;
+    gap: 2.5rem;
+  }
+  #detail-image,
+  #detail-info {
+    max-width: 100%;
+  }
+  #detail-image img {
+    height: auto;
+    aspect-ratio: 4 / 5;
+  }
+}

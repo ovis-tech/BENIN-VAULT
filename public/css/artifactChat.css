@@ -1,0 +1,174 @@
+/* =========================================================
+   ARTIFACT AI CHAT WIDGET — "curator's line" (black & white)
+========================================================= */
+
+.artifact-chat {
+  margin-top: 1.6rem;
+  border: 1px solid var(--ink, #0d0d0d);
+  border-radius: 4px;
+  background-color: var(--paper, #fafafa);
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  overflow: hidden;
+}
+
+.artifact-chat-title {
+  margin: 0;
+  padding: 0.8rem 1.2rem;
+  background-color: var(--ink, #0d0d0d);
+  color: var(--white, #ffffff);
+  font-size: 1.1rem;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.artifact-chat-title::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--white, #ffffff);
+  display: inline-block;
+}
+
+.artifact-chat-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: 0.9rem 1.2rem;
+  max-height: 200px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.artifact-chat-messages:empty {
+  padding: 0.4rem 1.2rem;
+}
+
+.artifact-chat-messages::-webkit-scrollbar {
+  width: 6px;
+}
+.artifact-chat-messages::-webkit-scrollbar-thumb {
+  background-color: var(--gray, #6b6b6b);
+  border-radius: 5rem;
+}
+.artifact-chat-messages::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* Base bubble */
+.artifact-chat-bubble {
+  max-width: 80%;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  font-family: 'Inter', sans-serif;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  animation: bubble-in 0.2s ease;
+}
+
+@keyframes bubble-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Visitor's question — right-aligned, solid ink */
+.artifact-chat-bubble-user {
+  align-self: flex-end;
+  background-color: var(--ink, #0d0d0d);
+  color: var(--white, #ffffff);
+  border-bottom-right-radius: 3px;
+}
+
+/* AI's answer — left-aligned, white with a bold ink rule */
+.artifact-chat-bubble-ai {
+  align-self: flex-start;
+  background-color: #fff;
+  color: var(--ink, #0d0d0d);
+  border: 1px solid var(--gray-light, #d8d8d8);
+  border-left: 3px solid var(--ink, #0d0d0d);
+  border-bottom-left-radius: 3px;
+}
+
+/* Loading state */
+.artifact-chat-bubble-ai[data-loading="true"] {
+  font-style: italic;
+  color: var(--gray, #6b6b6b);
+  border-left-color: var(--gray-light, #d8d8d8);
+}
+
+.artifact-chat-form {
+  display: flex;
+  gap: 0.6rem;
+  padding: 0.8rem 1.2rem;
+  border-top: 1px solid var(--gray-light, #d8d8d8);
+  background-color: #f1f1f1;
+}
+
+.artifact-chat-input {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+  font-family: 'Inter', sans-serif;
+  border: 1px solid var(--ink, #0d0d0d);
+  border-radius: 999px;
+  background-color: #fff;
+  color: var(--ink, #0d0d0d);
+}
+
+.artifact-chat-input:focus {
+  outline: 2px solid var(--ink, #0d0d0d);
+  outline-offset: 1px;
+}
+
+.artifact-chat-send {
+  padding: 0.6rem 1.4rem;
+  font-size: 0.95rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  border: 1px solid var(--ink, #0d0d0d);
+  border-radius: 999px;
+  background-color: var(--ink, #0d0d0d);
+  color: #fff;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.artifact-chat-send:hover {
+  background-color: #fff;
+  color: var(--ink, #0d0d0d);
+}
+
+/* -------- Mobile -------- */
+@media (max-width: 768px) {
+  .artifact-chat {
+    max-width: 100%;
+  }
+  .artifact-chat-messages {
+    max-height: 180px;
+  }
+  .artifact-chat-bubble {
+    max-width: 90%;
+    font-size: 0.9rem;
+  }
+  .artifact-chat-form {
+    flex-direction: column;
+  }
+  .artifact-chat-send {
+    width: 100%;
+  }
+}

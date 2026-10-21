@@ -1,0 +1,357 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  font-family: sans-serif;
+  transition: 0.2s;
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar {
+  width: 8px;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: black;
+  border-radius: 5rem;
+}
+
+html::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+section {
+  padding: 5rem 9%;
+}
+
+.heading {
+  padding-top: 2rem;
+  text-align: center;
+  font-size: 3.5rem;
+  color: #130f40;
+  margin-bottom: 50px;
+}
+
+.heading span {
+  color: black;
+}
+
+/* HEADER */
+.header {
+  background-color: white;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 9%;
+  box-shadow: 0 0.5rem 1.5rem rgb(0, 0, 0);
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+.header .logo {
+  display: flex;
+  align-items: center;
+}
+
+.header .logo img {
+  width: auto;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  padding: 2px;
+  position: relative;
+}
+
+.header span {
+  font-size: 25px;
+  font-style: italic;
+  font-weight: bolder;
+}
+
+.header a {
+  color: black;
+  font-family: nexa;
+  font-size: 30px;
+}
+
+.nav-bar {
+  width: 600px;
+  height: 50px;
+  background-color: black;
+  margin-right: 227px;
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+  padding: 16px;
+  justify-content: center;
+  text-align: center;
+}
+
+.nav-bar a {
+  margin: 0 1rem;
+  font-size: 17px;
+  font-family: "Dm sans", sans-serif;
+  color: white;
+  padding: 10px;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
+.nav-bar a:hover {
+  box-shadow: 0 0.5rem 1.5rem rgb(255, 255, 255);
+}
+
+#menu-btn {
+  display: none;
+}
+.icons {
+  display: flex;
+  gap: 15px;
+}
+.icons a {
+  font-size: 20px;
+}
+.icons i {
+  font-size: 20px;
+}
+.login-form {
+  position: absolute;
+  top: 120%;
+  right: 2rem;
+  width: 35rem;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  padding: 2rem;
+  display: none;
+}
+
+.login-form.active {
+  display: block;
+  animation: fadeIn 0.4s linear;
+}
+
+.login-form h3 {
+  color: black;
+  font-size: 2.5rem;
+  font-style: "cinzel", serif;
+  padding-bottom: 2rem;
+}
+
+.login-form .box {
+  width: 100%;
+  border-bottom: 0.2rem solid black;
+  padding: 1.5rem 0;
+  font-size: 1.6rem;
+  color: black;
+  margin: 1rem 0;
+}
+
+.login-form .remember {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.login-form .remember label {
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: white;
+}
+
+.btn {
+  display: inline-block;
+  font-size: 15px;
+  margin-top: 1rem;
+  padding: 0.8rem 2.8rem;
+  border-radius: 5rem;
+  border-top-left-radius: 0;
+  border: 0.2rem solid black;
+  cursor: pointer;
+  background: none;
+  color: black;
+  overflow: hidden;
+  position: relative;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: black;
+  z-index: -1;
+  transition: 0.2s linear;
+  clip-path: circle(0% at 0% 5%);
+}
+
+.btn:hover::before {
+  clip-path: circle(100%);
+}
+
+.btn:hover {
+  color: white;
+}
+
+.login-form .btn {
+  width: 100%;
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.login-form .btn:hover {
+  background-color: black;
+}
+
+.login-form .links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.login-form .links a {
+  font-size: 1.4rem;
+  color: black;
+}
+
+.login-form .links a:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+@keyframes fadeIn {
+  0% {
+    transform: translateY(10rem);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.plan {
+  background-color: black;
+  margin-top: 40px;
+}
+
+.plan .logo {
+  background-color: #fff;
+  margin-left: 600px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: solid black 1px;
+  width: 60px;
+  height: 60px;
+  margin-top: 50px;
+  position: relative;
+}
+.plan .logo img {
+  width: 70px;
+  height: 70px;
+  margin-left: -5px;
+}
+
+.plan h3 {
+  color: #fff;
+  font-size: 70px;
+  font-family: "cinzel", serif;
+  margin-top: 40px;
+  justify-content: center;
+  text-align: center;
+}
+.plan p {
+  font-size: 17px;
+  font-family: "DM Sans", sans-serif;
+  color: #fff;
+  justify-content: center;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.plan .card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 50px;
+}
+
+.plan .card-container .card {
+  text-align: center;
+  align-items: center;
+  width: 370px;
+  height: 530px;
+  background-color: #fff;
+  color: #7d859f;
+  padding: 60px;
+}
+
+.plan .card-container .card img {
+  width: 114px;
+  height: 123px;
+}
+.plan .card-container .card h1 {
+  font-size: 28px;
+  color: black;
+}
+.plan .card-container .card h4 {
+  font-size: 14px;
+  color: black;
+}
+.plan .card-container .card h4 span {
+  font-size: 78px;
+  color: black;
+}
+.plan .card-container .card ul {
+  font-size: 20px;
+  color: black;
+  margin-top: 9px;
+  line-height: 25px;
+}
+.plan .card-container .card .btn-purchase {
+  padding: 19px 50px;
+  border-color: black;
+  font-size: 14px;
+  border-radius: 30px;
+  margin-top: 20px;
+}
+.plan .card-container .card .btn-purchase:hover {
+  background-color: black;
+  border-color: black;
+  color: #fff;
+}
+.plan .link {
+  font-size: 18px;
+  padding: 20px 80px;
+  width: 567px;
+  height: 60px;
+  background-color: #fff;
+  border-radius: 30px;
+  text-align: center;
+  margin-left: 340px;
+}
+.plan .link p {
+  font-size: 18px;
+  color: black;
+  margin-top: -3px;
+}
+.plan .link a {
+  text-decoration-line: underline;
+  font-size: 18px;
+}

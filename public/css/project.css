@@ -1,0 +1,686 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  font-family: sans-serif;
+  transition: 0.2s;
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+html::-webkit-scrollbar {
+  width: 8px;
+}
+html::-webkit-scrollbar-thumb {
+  background-color: black;
+  border-radius: 5rem;
+}
+html::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+section {
+  padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 9vw, 9%);
+}
+
+.heading {
+  padding-top: 2rem;
+  text-align: center;
+  font-size: clamp(2.4rem, 3vw, 3.5rem);
+  color: #130f40;
+  margin-bottom: 50px;
+}
+.heading span {
+  color: black;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+/* HEADER */
+.header {
+  background-color: white;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 9%;
+  box-shadow: 0 0.5rem 1.5rem rgb(0, 0, 0);
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+.header .logo {
+  display: flex;
+  align-items: center;
+}
+
+.header .logo img {
+  width: auto;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  padding: 2px;
+  position: relative;
+}
+
+.header span {
+  font-size: 25px;
+  font-style: italic;
+  font-weight: bolder;
+}
+
+.header a {
+  color: black;
+  font-family: nexa;
+  font-size: 30px;
+}
+
+.nav-bar {
+  width: 600px;
+  height: 50px;
+  background-color: black;
+  margin-right: 227px;
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+  padding: 16px;
+  justify-content: center;
+  text-align: center;
+}
+
+.nav-bar a {
+  margin: 0 1rem;
+  font-size: 17px;
+  font-family: "Dm sans", sans-serif;
+  color: white;
+  padding: 10px;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
+.nav-bar a:hover {
+  box-shadow: 0 0.5rem 1.5rem rgb(255, 255, 255);
+}
+
+.btn {
+  display: inline-block;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  padding: 0.8rem 2.8rem;
+  border-radius: 5rem;
+  border-top-left-radius: 0;
+  border: 0.2rem solid black;
+  cursor: pointer;
+  background: none;
+  color: black;
+  overflow: hidden;
+  position: relative;
+}
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: black;
+  z-index: -1;
+  transition: 0.2s linear;
+  clip-path: circle(0% at 0% 5%);
+}
+.btn:hover::before {
+  clip-path: circle(100%);
+}
+.btn:hover {
+  color: white;
+}
+/* =========================================================
+   HOME
+========================================================= */
+.Home {
+  min-height: 100vh;
+  background-image: url(/image/Masterpiece-2.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.Home h3 {
+  color: white;
+  font-size: clamp(3.2rem, 8vw, 9rem);
+  margin-top: clamp(6rem, 12vw, 13rem);
+  font-family: aktura;
+  line-height: 1.15;
+}
+.Home p {
+  color: white;
+  font-size: clamp(1.6rem, 2.4vw, 3rem);
+  font-family: "Times New Roman", Times, serif;
+  margin-top: clamp(3rem, 8vw, 13rem);
+  max-width: 90ch;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   MUSEUM
+========================================================= */
+.Museum {
+  padding: clamp(4rem, 10vw, 12rem) clamp(1.5rem, 9vw, 9%);
+}
+/* Fixed margin-left:730px hack replaced with true centering */
+.Museum .logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 50%;
+  border: solid black 1px;
+  width: 60px;
+  height: 60px;
+  margin: -2rem auto 0;
+}
+.Museum .logo img {
+  width: 70px;
+  height: 70px;
+  margin-left: -5px;
+}
+.Museum .write h3 {
+  font-size: clamp(2.6rem, 6vw, 9.2rem);
+  font-family: cinzel, serif;
+  text-align: center;
+  margin-top: 50px;
+  line-height: 1.15;
+}
+.Museum .container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(3rem, 8vw, 15rem);
+  margin-top: 80px;
+  justify-content: center;
+}
+.Museum .container .container-image {
+  flex: 1 1 400px;
+  max-width: 746px;
+}
+.Museum .container .container-image img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 746 / 500;
+  object-fit: cover;
+}
+.Museum .container .container-write {
+  flex: 1 1 300px;
+  max-width: 500px;
+}
+.Museum .container .container-write .item {
+  margin-bottom: 60px;
+}
+.Museum .container .container-write .item span {
+  font-size: clamp(1.8rem, 2.2vw, 2.2rem);
+  font-family: cinzel, serif;
+  color: black;
+  padding-left: 22px;
+}
+.Museum .container .container-write .item p {
+  font-size: clamp(1.4rem, 1.8vw, 1.7rem);
+  font-family: "DM Sans", sans-serif;
+  color: black;
+  margin-top: 30px;
+}
+.Museum .container .container-write .item i {
+  font-size: clamp(2rem, 2.5vw, 3rem);
+  color: black;
+}
+
+/* =========================================================
+   INSPIRATION
+========================================================= */
+.inspiration {
+  padding: 0px;
+  margin: 0px;
+  border-bottom: 1px solid black !important;
+  height: auto;
+}
+.inspiration .logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 50%;
+  border: solid white 1px;
+  width: 60px;
+  height: 60px;
+  margin: -2rem auto 0;
+}
+.inspiration .logo img {
+  width: 70px;
+  height: 70px;
+  margin-left: -5px;
+}
+.inspiration .image {
+  background-color: black;
+  width: auto;
+  height: auto;
+  min-height: 90px;
+  padding: 4rem 1.5rem 2rem;
+  display: flex;
+  justify-content: center;
+}
+.inspiration .write {
+  text-align: center;
+}
+.inspiration .write h3 {
+  font-size: clamp(2.6rem, 6vw, 9rem);
+  font-family: cinzel, serif;
+  margin-top: 60px;
+  line-height: 1.15;
+}
+.inspiration .card-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(2rem, 4vw, 4rem);
+  margin-top: 90px;
+  padding: 0 clamp(1.5rem, 6vw, 6rem);
+  justify-items: center;
+}
+.inspiration .card-container .card {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  min-height: 0;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: black;
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.973);
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.373);
+  line-height: 1.6;
+  transition: transform 0.3s ease;
+  position: relative;
+}
+.inspiration .card-container .card h3 {
+  font-size: clamp(1.8rem, 2.2vw, 2.6rem);
+  font-family: cinzel, serif;
+  margin-bottom: 20px;
+}
+.inspiration .card-container .card i {
+  font-size: 1.2rem;
+}
+.inspiration .card-container .card span {
+  font-size: clamp(1.6rem, 2vw, 1.9rem);
+  font-family: "DM Sans", sans-serif;
+  margin-left: 10px;
+  line-height: 1.7;
+}
+.inspiration .card-container .card:hover {
+  transform: translateY(-10px);
+  animation: float 1.5s ease-in-out infinite alternate;
+}
+@keyframes float {
+  0% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(-15px);
+  }
+}
+.inspiration .card-container .card:nth-child(2) {
+  margin-top: 60px;
+}
+
+.inspiration .inspiration-image {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 3rem);
+  align-items: center;
+  height: auto;
+  margin-top: 90px;
+  padding: 0 clamp(1.5rem, 6vw, 6rem) 4rem;
+}
+.inspiration .inspiration-image .image1,
+.inspiration .inspiration-image .image2,
+.inspiration .inspiration-image .image3 {
+  margin: 0;
+  padding: 0;
+}
+.inspiration .inspiration-image img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+.inspiration .inspiration-image .image2 img {
+  aspect-ratio: 4 / 3;
+}
+
+/* =========================================================
+   PLAN
+========================================================= */
+.plan {
+  background-color: black;
+}
+.plan .logo {
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: solid black 1px;
+  width: 60px;
+  height: 60px;
+  margin: 50px auto 0;
+  position: relative;
+}
+.plan .logo img {
+  width: 70px;
+  height: 70px;
+  margin-left: -5px;
+}
+.plan h3 {
+  color: #fff;
+  font-size: clamp(2.6rem, 5vw, 7rem);
+  font-family: "cinzel", serif;
+  margin-top: 40px;
+  text-align: center;
+}
+.plan p {
+  font-size: clamp(1.4rem, 1.8vw, 1.7rem);
+  font-family: "DM Sans", sans-serif;
+  color: #fff;
+  text-align: center;
+  margin-top: 30px;
+  max-width: 90ch;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+.plan .card-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding: 50px 0;
+  gap: 30px;
+}
+.plan .card-container .card {
+  text-align: center;
+  width: 100%;
+  max-width: 370px;
+  height: auto;
+  min-height: 520px;
+  background-color: #fff;
+  color: #7d859f;
+  padding: clamp(2.5rem, 4vw, 6rem) clamp(1.5rem, 3vw, 3.5rem);
+  margin: 0 auto;
+}
+.plan .card-container .card img {
+  width: 114px;
+  height: 123px;
+  margin: 0 auto;
+}
+.plan .card-container .card h1 {
+  font-size: clamp(2.4rem, 2.6vw, 3.2rem);
+  color: black;
+}
+.plan .card-container .card h4 {
+  font-size: 1.8rem;
+  color: black;
+}
+.plan .card-container .card h4 span {
+  font-size: clamp(4.4rem, 6.5vw, 8.2rem);
+  color: black;
+}
+.plan .card-container .card ul {
+  font-size: clamp(2rem, 2.4vw, 2.4rem);
+  color: black;
+  margin-top: 1.2rem;
+  line-height: 1.7;
+  text-align: left;
+  padding-left: 1.5rem;
+}
+.plan .card-container .card ul li {
+  margin-bottom: 1rem;
+}
+.plan .card-container .card ul li:last-child {
+  margin-bottom: 0;
+}
+.plan .card-container .card .btn-purchase {
+  padding: 1.9rem 5rem;
+  border-color: black;
+  font-size: 1.7rem;
+  border-radius: 30px;
+  margin-top: 20px;
+}
+.plan .card-container .card .btn-purchase:hover {
+  background-color: black;
+  border-color: black;
+  color: #fff;
+}
+.plan .link {
+  font-size: clamp(1.5rem, 1.8vw, 1.8rem);
+  padding: 2rem clamp(2rem, 6vw, 8rem);
+  width: min(100%, 567px);
+  height: auto;
+  background-color: #fff;
+  border-radius: 30px;
+  text-align: center;
+  margin: 0 auto;
+}
+.plan .link p {
+  font-size: inherit;
+  color: black;
+}
+.plan .link a {
+  text-decoration-line: underline;
+  font-size: inherit;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+#FOOTER {
+  background-color: #fff;
+  color: black;
+}
+#FOOTER img {
+  width: 100%;
+}
+#FOOTER .button {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+  transform: translateY(-40px);
+  padding: 0 1.5rem;
+}
+#FOOTER .button .btn {
+  color: black;
+  border-color: black;
+}
+#FOOTER .button .btn:hover {
+  color: white;
+}
+#FOOTER p {
+  text-align: center;
+  color: black;
+  padding: 3px;
+  font-size: clamp(1.3rem, 1.8vw, 1.8rem);
+}
+#FOOTER p span {
+  color: black;
+}
+
+/* =========================================================
+   RESPONSIVE BREAKPOINTS
+========================================================= */
+
+/* Large desktop monitors */
+@media (min-width: 1440px) {
+  .Home p,
+  .plan p {
+    max-width: 110ch;
+  }
+}
+
+/* Laptops */
+@media (max-width: 1024px) {
+  .nav-bar {
+    max-width: 480px;
+  }
+  .inspiration .card-container,
+  .plan .card-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .inspiration .card-container .card:nth-child(2) {
+    margin-top: 0;
+  }
+  .inspiration .inspiration-image {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .inspiration .inspiration-image .image3 {
+    grid-column: span 2;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+
+/* Tablets — hamburger nav kicks in */
+@media (max-width: 768px) {
+  #menu-btn {
+    display: flex;
+  }
+
+  .nav-bar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: min(75vw, 320px);
+    max-width: none;
+    border-radius: 0;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 8rem 2rem 2rem;
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -0.5rem 0 1.5rem rgba(0, 0, 0, 0.3);
+    z-index: 1050;
+  }
+  .nav-bar.open {
+    transform: translateX(0);
+  }
+  .nav-bar a {
+    display: block;
+    width: 100%;
+    margin: 0.6rem 0;
+    font-size: 1.8rem;
+  }
+
+  .Museum .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .inspiration .card-container {
+    grid-template-columns: 1fr;
+  }
+  .inspiration .card-container .card {
+    max-width: 420px;
+  }
+  .inspiration .inspiration-image {
+    grid-template-columns: 1fr;
+  }
+  .inspiration .inspiration-image .image3 {
+    grid-column: auto;
+    max-width: 100%;
+  }
+
+  .plan .card-container {
+    grid-template-columns: 1fr;
+  }
+  .plan .card-container .card {
+    max-width: 420px;
+  }
+
+  #FOOTER .button {
+    transform: translateY(0);
+    margin-top: 2rem;
+  }
+}
+
+/* Large phones */
+@media (max-width: 480px) {
+  section {
+    padding: 3rem 1.5rem;
+  }
+
+  .header {
+    padding: 1.2rem 1.5rem;
+  }
+  .header span {
+    font-size: 1.6rem;
+  }
+
+  .Museum {
+    padding: 6rem 1.5rem;
+  }
+
+  .inspiration .card-container,
+  .plan .card-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .plan .link {
+    padding: 1.6rem 2rem;
+  }
+
+  #FOOTER .button {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Small phones */
+@media (max-width: 320px) {
+  .Home h3 {
+    font-size: 3rem;
+  }
+  .Home p {
+    font-size: 1.5rem;
+  }
+  .Museum .write h3,
+  .inspiration .write h3 {
+    font-size: 2.4rem;
+  }
+  .plan h3 {
+    font-size: 2.4rem;
+  }
+}

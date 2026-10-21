@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clerk Test</title>
+  </head>
+  <body>
+    <!-- Auth container -->
+    <div id="auth"></div>
+
+    <!-- Protected content -->
+    <div id="page-content" style="display: none">
+      <h1>Welcome to the protected page 🎉</h1>
+      <div id="user-buttons"></div>
+    </div>
+
+    <!-- Clerk SDK -->
+    <script
+      async
+      crossorigin="anonymous"
+      data-clerk-publishable-key="pk_test_c3Rlcmxpbmctc2hhZC02OC5jbGVyay5hY2NvdW50cy5kZXYk"
+      src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"
+    ></script>
+
+    <!-- Clerk Setup -->
+    <script>
+      window.addEventListener('clerk:loaded', () => {
+        const authDiv = document.getElementById('auth')
+        const pageContent = document.getElementById('page-content')
+        const userButtons = document.getElementById('user-buttons')
+
+        if (Clerk.user) {
+          // ✅ User is signed in
+          authDiv.style.display = 'none'
+          pageContent.style.display = 'block'
+          Clerk.mountUserButton(userButtons)
+          console.log('Signed in:', Clerk.user.fullName)
+        } else {
+          // ❌ User not signed in → show sign-in
+          pageContent.style.display = 'none'
+
+          const signInDiv = document.createElement('div')
+          signInDiv.id = 'sign-in'
+          authDiv.appendChild(signInDiv)
+
+          Clerk.mountSignIn(signInDiv)
+        }
+      })
+    </script>
+  </body>
+</html>
